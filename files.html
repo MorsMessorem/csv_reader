@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for table in tables %}
+        <table>
+            <thead>
+                <tr>
+                    sort by:
+                    <a href="/file/{{ request.view_args['filename'] }}?column=index" style="text-decoration:none;">
+                        index
+                    </a>
+                    {% for title in titles %}
+                        <a href="/file/{{ request.view_args['filename'] }}?column={{ title }}" style="text-decoration:none;">
+                            {{ title }}
+                        </a>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {{ table|safe }}
+            </tbody>
+        </table>
+    {% endfor %}
+{% endblock %}

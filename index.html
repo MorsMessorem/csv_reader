@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="{{ url_for('index')}}" method="POST" enctype="multipart/form-data">
+    <div>
+        <label>File: </label>
+        <div>
+            <input type="file" name="file">
+        </div>
+    </div>
+    <p>
+        <button type="submit">Submit</button>
+    </p>
+</form>
+
+<p> uploaded files: </p>
+<ul>
+    {% for name in filenames %}
+        <li >
+            <a href="/delete/{{ name }}" style="text-decoration:none; color:#FF0000;">X</a>
+            
+            <a href="/file/{{ name }}">{{ name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
